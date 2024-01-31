@@ -14,7 +14,7 @@ environment {
                 sh 'mvn clean deploy -Dmaven.test.skip=true'
             }
         }
-         stage{
+         stage("test"){
             steps{
                 echo "----------unit test started--------------"
                 sh 'mvn surefire-report:report'
