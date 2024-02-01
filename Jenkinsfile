@@ -1,4 +1,6 @@
 def registry = 'https://verint1.jfrog.io'
+def version = 2.1.2
+def imagename = 'https://verint1.jfrog.io/verint--docker/ttrend'
 
 pipeline {
     agent {
@@ -72,6 +74,24 @@ environment {
         }   
     }
 
+
+        stage('docker build') {
+            steps{
+                script {
+                app = docker.build ( imagename + ":$version" )
+                }
+            }
+        }
+
+        stage('Deploy push') {
+            steps{
+                script {
+                docker.withRegistry( registry, jfrog-maven-jenkins ) {
+                    app.push()
+                }
+                }
+            }
+            }    
 
 
     }
