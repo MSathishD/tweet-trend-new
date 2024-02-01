@@ -1,5 +1,5 @@
 def registry = 'https://verint1.jfrog.io'
-def version = 2.1.2
+def version = '2.1.2'
 def imagename = 'https://verint1.jfrog.io/verint--docker/ttrend'
 
 pipeline {
