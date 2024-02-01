@@ -77,16 +77,17 @@ environment {
 
         stage('docker build') {
             steps{
-                script {
-                app = docker.build(imageName+":"+version)
-                }
+                sh 'docker build -t https://verint1.jfrog.io/verint-docker/ttrend:2.1.2 .'
+                // script {
+                // def app = docker.build(imageName+":"+version)
+                // }
             }
         }
 
         stage('Deploy push') {
             steps{
                 script {
-                docker.withRegistry( registry, jfrog-maven-jenkins ) {
+                docker.withRegistry(registry, 'jfrog-maven-jenkins') {
                     app.push()
                 }
                 }
