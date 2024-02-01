@@ -1,6 +1,6 @@
 def registry = 'https://verint1.jfrog.io'
 def version = '2.1.2'
-def imageName = 'https://verint1.jfrog.io/verint-docker/ttrend'
+def imageName = 'verint1.jfrog.io/verint-docker/ttrend'
 
 pipeline {
     agent {
@@ -77,10 +77,10 @@ environment {
 
         stage('docker build') {
             steps{
-                sh 'docker build -t https://verint1.jfrog.io/verint-docker/ttrend:2.1.2 .'
-                // script {
-                // def app = docker.build(imageName+":"+version)
-                // }
+                // sh 'docker build -t https://verint1.jfrog.io/verint-docker/ttrend:2.1.2 .'
+                script {
+                    app = docker.build(imageName+":"+version)
+                }
             }
         }
 
