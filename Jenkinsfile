@@ -78,7 +78,7 @@ environment {
         stage('docker build') {
             steps{
                 script {
-                app = docker.build ( imageName+":"+version)
+                app = docker.build(imageName+":"+version)
                 }
             }
         }
